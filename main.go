@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"time"
 )
@@ -37,12 +36,15 @@ and any of the above without the year.
 		a, b = b, a
 	}
 
+	layout := "Jan 2 2006"
+	fmt.Println(b.Format(layout), "to", a.Format(layout))
+
 	i := 0
 	for ; b.Before(a); i++ {
 		b = b.Add(24 * time.Hour)
 	}
 
-	fmt.Printf("days=%d\n", i)
+	fmt.Printf("%d days\n", i)
 }
 
 func toTime(s string) (time.Time, error) {
@@ -60,10 +62,10 @@ func toTime(s string) (time.Time, error) {
 			} {
 				t, err = time.Parse(layout, s)
 				if err == nil {
-					log.Printf("parsed %s as %s", s, layout)
+					// log.Printf("parsed %s as %s", s, layout)
 					return nil
 				}
-				log.Printf("could not parse %s: %v", s, err)
+				// log.Printf("could not parse %s: %v", s, err)
 			}
 			return fmt.Errorf("could not parse %s", s)
 		}
