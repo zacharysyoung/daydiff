@@ -1,3 +1,3 @@
-module github.com/zacharysyoung/daydiff
+module github.com/zacharysyoung/timediff
 
-go 1.22.4
+go 1.25.1
